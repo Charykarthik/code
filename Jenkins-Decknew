@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage("Git Checkout"){
             steps{
-                git branch: 'dev', credentialsId: 'nani', url: 'https://github.com/Charykarthik/code.git'
+                git branch: 'dev', credentialsId: 'karthik', url: 'https://github.com/Charykarthik/code.git'
             }
         }
         stage("Maven Build"){
@@ -20,7 +20,7 @@ pipeline{
             steps{
                 sshagent(credentials: [''], ignoreMissing: true) {
                   sh """
-                    scp -o target/myweb.war  karthikchary744@35.188.129.137:/home/karthikchary744/apache-tomcat-9.0.73/webapps/
+                    scp -r StrictHostKeyChecking=yes target/myweb.war  karthikchary744@35.188.129.137:/home/karthikchary744/apache-tomcat-9.0.73/webapps
                     
                     ssh karthikchary744@35.188.129.137 /home/root@tomcat karthikchary744/apache-tomcat-9.0.73/bin/shutdown.sh
                     
