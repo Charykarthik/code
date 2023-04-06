@@ -21,7 +21,7 @@ pipeline{
                 sshagent(credentials: [''], ignoreMissing: true) {
   
                 sh """
-                    scp -o  target/*.war myweb.war  root@tomcat karthikchary744@35.226.224.54:/home/karthikchary744/apache-tomcat-9.0.73/webapps/
+                    scp -o  target/myweb.war  root@tomcat karthikchary744@35.226.224.54:/home/karthikchary744/apache-tomcat-9.0.73/webapps/
                     
                     ssh karthikchary744@35.226.224.54 /home/root@tomcat karthikchary744/apache-tomcat-9.0.73/bin/shutdown.sh
                     
